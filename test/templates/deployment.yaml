@@ -39,7 +39,7 @@ spec:
               protocol: TCP
           env:
             - name: ELASTICSEARCH_URL
-              value: elastic-svc.elastkc.svc.cluster.local
+              value: elastic-svc.elastic.svc.cluster.local
           livenessProbe:
             httpGet:
               path: /

@@ -37,6 +37,9 @@ spec:
             - name: http
               containerPort: {{ .Values.service.targetPort }}
               protocol: TCP
+          env:
+            - name: ELASTICSEARCH_URL
+            - value: elastic-svc.elastkc.svc.cluster.local
           livenessProbe:
             httpGet:
               path: /

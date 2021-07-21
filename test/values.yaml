@@ -88,3 +88,5 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+ElasticSearch: elastic-svc.elastic.svc.cluster.local

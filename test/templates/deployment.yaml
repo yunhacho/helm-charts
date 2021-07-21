@@ -11,6 +11,13 @@ spec:
   selector:
     matchLabels:
       {{- include "test.selectorLabels" . | nindent 6 }}
+
+  strategy: 
+    type: {{ .Values.strategy.type }}
+    rollingUpdate:
+      maxUnavailable: {{ .Values.strategy.rollingUdate.maxUnavailable }}
+      maxSurge: {{ .Values.strategy.rollingUdate.maxSurge }}
+
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -39,7 +46,7 @@ spec:
               protocol: TCP
           env:
             - name: ELASTICSEARCH_URL
-              value: elastic-svc.elastic.svc.cluster.local
+              value: {{ .Values.ElasticSearch }}
           livenessProbe:
             httpGet:
               path: /

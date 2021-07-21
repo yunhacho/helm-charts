@@ -6,9 +6,15 @@ replicaCount: 1
 
 image:
   repository: jyh5530/web-analysis
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
   tag: "latest"
+
+strategy:
+  type: RollingUpdate
+  rollingUdate:
+    maxUnavailable: 50%
+    maxSurge: 25%
 
 imagePullSecrets: []
 nameOverride: ""
@@ -71,9 +77,9 @@ resources: {}
   #   memory: 128Mi
 
 autoscaling:
-  enabled: false
+  enabled: true
   minReplicas: 1
-  maxReplicas: 1
+  maxReplicas: 3
   targetCPUUtilizationPercentage: 80
   # targetMemoryUtilizationPercentage: 80
 

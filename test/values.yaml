@@ -20,6 +20,10 @@ imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
+container:
+  command: python
+  args: app.py
+
 serviceAccount:
   # Specifies whether a service account should be created
   create: true

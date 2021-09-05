@@ -1,4 +1,4 @@
-# Default values for test.
+# Default values for webanalysis.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
@@ -51,7 +51,7 @@ service:
 ingress:
   enabled: false
   className: ""
-  annotations: {}
+  annotations:
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   hosts:

@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "test.fullname" . }}
+  name: {{ include "webanalysis.fullname" . }}
   labels:
-    {{- include "test.labels" . | nindent 4 }}
+    {{- include "webanalysis.labels" . | nindent 4 }}
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
   selector:
     matchLabels:
-      {{- include "test.selectorLabels" . | nindent 6 }}
+      {{- include "webanalysis.selectorLabels" . | nindent 6 }}
 
   strategy: 
     type: {{ .Values.strategy.type }}
@@ -25,13 +25,13 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "test.selectorLabels" . | nindent 8 }}
+        {{- include "webanalysis.selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      serviceAccountName: {{ include "test.serviceAccountName" . }}
+      serviceAccountName: {{ include "webanalysis.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
